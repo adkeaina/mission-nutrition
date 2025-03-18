@@ -1,0 +1,100 @@
+import React, { useState } from "react";
+import "./styles/login.css";
+
+interface LoginFormData {
+  username: string;
+  password: string;
+}
+
+const Login: React.FC = () => {
+  const [formData, setFormData] = useState<LoginFormData>({
+    username: "",
+    password: "",
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle login logic here
+    console.log("Login attempt with:", formData);
+  };
+
+  const handleSignUpClick = () => {
+    // Handle signup navigation
+    console.log("Navigate to signup");
+  };
+
+  return (
+    <div className="login-container">
+      <div className="login-content">
+        <h1 className="login-title">Login</h1>
+
+        <div className="login-image-container">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/19b62f6e8068e7cfce2cef4139c2ad0e9384f1d2"
+            alt=""
+            className="login-image"
+          />
+        </div>
+
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="input-group">
+            <div className="input-wrapper">
+              <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                value={formData.username}
+                onChange={handleInputChange}
+                className="login-input"
+                aria-label="Username"
+              />
+            </div>
+          </div>
+
+          <div className="input-group">
+            <div className="input-wrapper">
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={formData.password}
+                onChange={handleInputChange}
+                className="login-input"
+                aria-label="Password"
+              />
+            </div>
+          </div>
+
+          <button type="submit" className="login-button">
+            Sign in
+          </button>
+
+          <div className="signup-prompt">
+            <span>Don't have an account?</span>
+            <span
+              className="signup-link"
+              onClick={handleSignUpClick}
+              role="button"
+              tabIndex={0}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") handleSignUpClick();
+              }}
+            >
+              Sign up
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default Login;
