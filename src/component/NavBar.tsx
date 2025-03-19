@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
-import { FaCalendarAlt, FaHome, FaChartBar, FaCog } from 'react-icons/fa';
 
 const NavBar: React.FC = () => {
   return (
