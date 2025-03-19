@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles/today.css";
 
-const Today: React.FC = () => {
+const Loading: React.FC = () => {
   return (
     <div className="loading-screen">
       <img
@@ -13,4 +13,4 @@ const Today: React.FC = () => {
   );
 };
 
-export default Today;
+export default Loading;
