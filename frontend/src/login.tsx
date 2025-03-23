@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import "./styles/login.css";
+import { useNavigate } from "react-router-dom";
 
 interface LoginFormData {
   username: string;
   password: string;
 }
 
-const Login: React.FC = () => {
+interface LoginProps {
+  onLogin: (isAuthenticated: boolean) => void; // Define the prop type for the login function
+}
+
+const Login: React.FC<LoginProps> = ({ onLogin }) => {
+  const navigate = useNavigate();  // Initialize navigate from react-router-dom
+
   const [formData, setFormData] = useState<LoginFormData>({
     username: "",
     password: "",
@@ -23,12 +30,13 @@ const Login: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle login logic here
-    console.log("Login attempt with:", formData);
+    if (formData.username === "user" && formData.password === "password") {
+      onLogin(true); // Call the onLogin prop function with true
+    }
   };
 
   const handleSignUpClick = () => {
-    // Handle signup navigation
-    console.log("Navigate to signup");
+    navigate('/signup');
   };
 
   return (
