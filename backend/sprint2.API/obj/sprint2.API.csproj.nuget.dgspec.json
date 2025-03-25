@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\AEZC2\\OneDrive\\Escritorio\\IS401_Sprint2\\mission-nutrition\\backend\\sprint2.API\\sprint2.API.csproj": {}
+    "/Users/ellaneumarker/RiderProjects/mission-nutrition/backend/sprint2.API/sprint2.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\AEZC2\\OneDrive\\Escritorio\\IS401_Sprint2\\mission-nutrition\\backend\\sprint2.API\\sprint2.API.csproj": {
+    "/Users/ellaneumarker/RiderProjects/mission-nutrition/backend/sprint2.API/sprint2.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AEZC2\\OneDrive\\Escritorio\\IS401_Sprint2\\mission-nutrition\\backend\\sprint2.API\\sprint2.API.csproj",
+        "projectUniqueName": "/Users/ellaneumarker/RiderProjects/mission-nutrition/backend/sprint2.API/sprint2.API.csproj",
         "projectName": "sprint2.API",
-        "projectPath": "C:\\Users\\AEZC2\\OneDrive\\Escritorio\\IS401_Sprint2\\mission-nutrition\\backend\\sprint2.API\\sprint2.API.csproj",
-        "packagesPath": "C:\\Users\\AEZC2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AEZC2\\OneDrive\\Escritorio\\IS401_Sprint2\\mission-nutrition\\backend\\sprint2.API\\obj\\",
+        "projectPath": "/Users/ellaneumarker/RiderProjects/mission-nutrition/backend/sprint2.API/sprint2.API.csproj",
+        "packagesPath": "/Users/ellaneumarker/.nuget/packages/",
+        "outputPath": "/Users/ellaneumarker/RiderProjects/mission-nutrition/backend/sprint2.API/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\AEZC2\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/ellaneumarker/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -43,8 +37,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -94,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.405/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
