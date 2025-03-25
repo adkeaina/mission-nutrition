@@ -1,9 +1,7 @@
 .homepage {
-  background-color: rgba(255, 105, 97, 1);
   display: flex;
   margin-left: auto;
   margin-right: auto;
-  max-width: 480px;
   width: 100%;
   flex-direction: column;
   overflow: hidden;
