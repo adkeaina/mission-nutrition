@@ -10,6 +10,7 @@ import Stats from './stats';
 import Today from './today';
 import { useEffect, useState } from 'react';
 import Login from './login';
+import { RecipeListProvider } from './context/RecipeListContext';
 
 function App() {
   const [data, setData] = useState(null);
@@ -36,33 +37,37 @@ function App() {
   }, []);
 
   return (
-    !isLoggedIn ? (
-      <Router>
-          <Routes>
-            <Route path="/login" element={<Login onLogin={handleLogin}/>} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="*" element={<Navigate to="/login" />} />
-          </Routes>
-        </Router>
-    ) : (
-      isLoading ? (
-        <Loading />
-      ) : (
-        <Router>
-          <Routes>
-            <Route path="/" element={<Navigate to="/home" />} />
-            <Route path="/login" element={<Navigate to="/home" />} />
-            <Route path="/home" element={<Homepage data={data} />} />
-            <Route path="/recipe/:recipeId" element={<Recipe />} />
-            <Route path="/search" element={<RecipeSearch />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/stats" element={<Stats />} />
-            <Route path="/today" element={<Today />} />
-          </Routes>
-          <NavBar />
-        </Router>
-      )
-    )
+    <>
+      <RecipeListProvider>
+        {!isLoggedIn ? (
+          <Router>
+              <Routes>
+                <Route path="/login" element={<Login onLogin={handleLogin}/>} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="*" element={<Navigate to="/login" />} />
+              </Routes>
+            </Router>
+        ) : (
+          isLoading ? (
+            <Loading />
+          ) : (
+            <Router>
+              <Routes>
+                <Route path="/" element={<Navigate to="/home" />} />
+                <Route path="/login" element={<Navigate to="/home" />} />
+                <Route path="/home" element={<Homepage data={data} />} />
+                <Route path="/recipe/:recipeId" element={<Recipe />} />
+                <Route path="/search" element={<RecipeSearch />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/stats" element={<Stats />} />
+                <Route path="/today" element={<Today />} />
+              </Routes>
+              <NavBar />
+            </Router>
+          )
+        )}
+      </RecipeListProvider>
+    </>
   );
 }
 
