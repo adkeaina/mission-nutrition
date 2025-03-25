@@ -1,3 +1,4 @@
 frontend/.vs/
 .vs
 *.code-workspace
+backend/obj/
