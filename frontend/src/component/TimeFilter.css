@@ -1,0 +1,48 @@
+.search-input {
+  width: 300px; /* Make the input longer (adjust the value as needed) */
+  padding: 10px 20px; /* Add padding for a more comfortable typing area */
+  font-size: 16px; /* Increase the font size to make text more legible */
+  border-radius: 30px; /* Makes the search bar rounded */
+  border: 1px solid #ccc; /* Adds a light border */
+  background-color: #f5f5f5; /* Gives a light background color */
+  outline: none; /* Removes the default outline when focused */
+  transition: all 0.3s; /* Smooth transition for focus effect */
+}
+
+.search-input:focus {
+  border-color: rgba(255, 69, 58, 1); /* Change border color when focused */
+  background-color: #fff; /* Optional: Change background color on focus */
+}
+.recipe-filter {
+  position: sticky;
+  top: 0; /* Stick to the top of the screen */
+  background-color: white; /* Ensures it has a white background */
+  z-index: 10; /* Ensures it stays above other content */
+  padding: 10px 0;
+  box-shadow: 0px 4px 2px -2px gray; /* Optional: adds a shadow effect to make it stand out */
+  width: 100%;
+}
+
+.filter-chips {
+  display: flex;
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically (if needed) */
+  gap: 10px; /* Space between chips */
+  margin-top: 10px; /* Adjust the top margin if needed */
+  flex-wrap: wrap; /* Allow chips to wrap if there are too many */
+  width: 100%; /* Ensure the container takes full width */
+}
+
+.filter-chip {
+  padding: 8px 15px;
+  border-radius: 20px;
+  background-color: rgba(255, 105, 97, 1);
+  color: white;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.filter-chip.selected {
+  background-color: rgba(255, 69, 58, 1); /* Change color when selected */
+}
