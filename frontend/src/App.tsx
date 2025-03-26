@@ -65,7 +65,7 @@ function App() {
                 <Route path="/login" element={<Navigate to="/home" />} />
                 <Route path="/home" element={<Homepage />} />
                 <Route path="/recipe/:recipeId" element={<Recipe />} />
-                <Route path="/search" element={<RecipeSearch />} />
+                <Route path="/search" element={<SearchPage />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/stats" element={<Stats />} />
                 <Route path="/today" element={<Today />} />
