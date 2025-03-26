@@ -14,6 +14,7 @@ import { RecipeListProvider } from './context/RecipeListContext';
 
 function App() {
   const [data, setData] = useState(null);
+  console.log(data);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(true); //TODO: Change to false (true is for testing)
 
@@ -55,7 +56,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Navigate to="/home" />} />
                 <Route path="/login" element={<Navigate to="/home" />} />
-                <Route path="/home" element={<Homepage data={data} />} />
+                <Route path="/home" element={<Homepage />} />
                 <Route path="/recipe/:recipeId" element={<Recipe />} />
                 <Route path="/search" element={<RecipeSearch />} />
                 <Route path="/signup" element={<SignUp />} />
