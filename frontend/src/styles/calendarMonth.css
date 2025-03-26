@@ -1,0 +1,52 @@
+.calendar-page {
+  width: 425px; /* Full width of the screen */
+  margin: 0; /* Remove any default margins */
+  padding: 20px 20px; /* Optional: Add some padding for spacing */
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    7,
+    1fr
+  ); /* 7 columns, one for each day of the week */
+  gap: 5px; /* Space between grid items */
+  grid-template-rows: repeat(6, 50px); /* 6 rows to fit 42 slots (max) */
+}
+
+.calendar-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* Same as the grid layout */
+  font-weight: bold;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.calendar-day-head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  color: #c94c45;
+  background-color: #ffffff;
+  border: 1px solid #ffffff;
+  font-size: 14px;
+}
+
+.calendar-day {
+  display: flex;
+  justify-content: flex-end; /* Aligns content to the right */
+  align-items: flex-start; /* Aligns content to the top */
+  height: 50px;
+  color: #c94c45;
+  background-color: #ffffff;
+  border: 1px solid #ffffff;
+  font-size: 14px;
+  padding-right: 5px; /* Optional: Adds some space from the right edge */
+  padding-top: 5px; /* Optional: Adds some space from the top edge */
+}
+
+.calendar-day.empty {
+  background-color: transparent;
+  border: none;
+}
