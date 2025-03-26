@@ -2,3 +2,4 @@ frontend/.vs/
 .vs
 *.code-workspace
 backend/obj/
+frontend/node_modules/
