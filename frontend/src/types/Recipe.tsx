@@ -1,10 +1,8 @@
 export interface Recipe {
-    recipeId: number;
-    name: string;
-    time: number;
-    timeDescription: string;
-    ingredients: string[];
-    steps: string[];
-    images: string[];
-    video: string;
+    recipeID: number;
+    recipeName: string;
+    timeToPrepare: string;
+    starRating: number;
+    servings: number;
+    mealOfTheDay: boolean;
 }
