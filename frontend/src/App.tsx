@@ -8,6 +8,8 @@ import RecipeSearch from './recipeSearch';
 import SignUp from './signup';
 import Stats from './stats';
 import Today from './today';
+import Account from './account';
+
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/stats" element={<Stats />} />
         <Route path="/today" element={<Today />} />
+        <Route path="/account" element={<Account />} />
+
       </Routes>
       <NavBar />
     </Router>
