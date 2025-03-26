@@ -1,16 +1,21 @@
-import './App.css';
-import NavBar from './component/NavBar';
-import Homepage from './home';
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import Loading from './loading';
-import Recipe from './recipe';
-import RecipeSearch from './recipeSearch';
-import SignUp from './signup';
-import Stats from './stats';
-import Today from './today';
-import { useEffect, useState } from 'react';
-import Login from './login';
-import { RecipeListProvider } from './context/RecipeListContext';
+import "./App.css";
+import NavBar from "./component/NavBar";
+import Homepage from "./home";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import Loading from "./loading";
+import Recipe from "./recipe";
+import SignUp from "./signup";
+import Stats from "./stats";
+import Today from "./today";
+import { useEffect, useState } from "react";
+import Login from "./login";
+import { RecipeListProvider } from "./context/RecipeListContext";
+import SearchPage from "./searchPage";
 
 function App() {
   const [data, setData] = useState(null);
@@ -25,11 +30,11 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://api.example.com/data');
+        const response = await fetch("https://api.example.com/data");
         const result = await response.json();
         setData(result);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       } finally {
         setIsLoading(false);
       }
@@ -42,12 +47,14 @@ function App() {
       <RecipeListProvider>
         {!isLoggedIn ? (
           <Router>
-              <Routes>
-                <Route path="/login" element={<Login onLogin={handleLogin}/>} />
-                <Route path="/signup" element={<SignUp />} />
-                <Route path="*" element={<Navigate to="/login" />} />
-              </Routes>
-            </Router>
+            <Routes>
+              <Route path="/login" element={<Login onLogin={handleLogin} />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="*" element={<Navigate to="/login" />} />
+            </Routes>
+          </Router>
+        ) : isLoading ? (
+          <Loading />
         ) : (
           isLoading ? (
             <Loading />
