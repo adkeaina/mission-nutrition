@@ -1,5 +1,4 @@
-frontend/.vs/
-.vs
+.vs/
 *.code-workspace
-backend/obj/
-frontend/node_modules/
+backend/sprint2.API/bin/
+backend/sprint2.API/obj/
