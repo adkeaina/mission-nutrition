@@ -1,17 +1,13 @@
-import React from "react";
+import { useState } from "react";
 import "./styles/home.css";
 import { useNavigate } from 'react-router-dom';
 
-interface HomepageProps {
-  data: any;
-}
-
-const Homepage: React.FC<HomepageProps> = ({ data }) => {
+const Homepage = () => {
   const navigate = useNavigate();  // Initialize navigate from react-router-dom
+  const [announcementSeen, setAnnouncementSeen] = useState(false);
 
   return (
     <div className="homepage">
-      <div hidden>{data}</div>
       <div className="welcome-text">
         <span className="welcome-heading">Welcome!</span>
         <br />
@@ -19,7 +15,7 @@ const Homepage: React.FC<HomepageProps> = ({ data }) => {
         <span className="welcome-subtext">Select an option below</span>
       </div>
 
-      <div className="action-button action-button-first" onClick={() => navigate('/today')}>
+      <div className="action-button" onClick={() => navigate('/search')}>
         <img
           src="https://cdn.builder.io/api/v1/image/assets/TEMP/990308da33090936e02078ca4480b79c82d65d1757cfbb38874a7398d8086c22?placeholderIfAbsent=true&apiKey=12e28406f08449fa85c02ddc97075e3b"
           className="action-icon"
@@ -32,7 +28,7 @@ const Homepage: React.FC<HomepageProps> = ({ data }) => {
         </div>
       </div>
 
-      <div className="action-button action-button-second" onClick={() => navigate('/recipe')}>
+      <div className="action-button" onClick={() => navigate('/search')}>
         <img
           src="https://cdn.builder.io/api/v1/image/assets/TEMP/410638fab30ddd7db1643b05610676142b6cc8dd8e03200757a4d9581562118a?placeholderIfAbsent=true&apiKey=12e28406f08449fa85c02ddc97075e3b"
           className="action-icon"
@@ -45,7 +41,7 @@ const Homepage: React.FC<HomepageProps> = ({ data }) => {
         </div>
       </div>
 
-      <div className="action-button action-button-third" onClick={() => navigate('/today')}>
+      <div className="action-button" onClick={() => navigate('/today')}>
         <img
           src="https://cdn.builder.io/api/v1/image/assets/TEMP/e64c49a8a53ccf7893fcf55dd9b933d97445ae7ca1d9bbe0d8a880519302f3e0?placeholderIfAbsent=true&apiKey=12e28406f08449fa85c02ddc97075e3b"
           className="action-icon"
@@ -58,7 +54,7 @@ const Homepage: React.FC<HomepageProps> = ({ data }) => {
           Week
         </div>
       </div>
-
+    {announcementSeen || (
       <div className="notification-card">
         <div className="notification-content">
           <div className="notification-stack">
@@ -77,7 +73,7 @@ const Homepage: React.FC<HomepageProps> = ({ data }) => {
               <div>View Recipes</div>
             </button>
           </div>
-          <button className="close-button">
+          <button className="close-button" onClick={() => setAnnouncementSeen(true)}>
             <img
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/210e0f93c70dcb659aceed8ba1078cc19c909d21a7c51efef92e46c424bad596?placeholderIfAbsent=true&apiKey=12e28406f08449fa85c02ddc97075e3b"
               style={{ width: "20px", aspectRatio: "1" }}
@@ -86,6 +82,7 @@ const Homepage: React.FC<HomepageProps> = ({ data }) => {
           </button>
         </div>
       </div>
+    )}
 
     </div>
   );

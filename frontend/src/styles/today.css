@@ -110,6 +110,18 @@
   background-color: #ff6961;
 }
 
+.btn-group .btn {
+  color: #fff;
+  background-color: #ff6961;
+  border: 1px solid #ff6961;
+}
+
+.btn-group .btn.active {
+  color: #ff6961;
+  background-color: #fff;
+  border: 1px solid #ff6961;
+}
+
 .shopping-list {
   width: 85px;
   height: 44px;

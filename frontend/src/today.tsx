@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles/today.css";
+import { Link } from "react-router-dom";
 
 const Today: React.FC = () => {
   return (
@@ -84,11 +85,13 @@ const Today: React.FC = () => {
             </div>
           </div>
           <div className="controls">
-            <div className="toggle-container">
-              <button className="toggle-button toggle-button-left">Week</button>
-              <button className="toggle-button toggle-button-right">
-                Today
-              </button>
+            <div className="btn-group">
+              <Link to="/CalendarMonth" className="nav-link">
+                {" "}
+                <button className="btn btn-secondary">Month</button>
+              </Link>
+              <button className="btn btn-secondary active">Week</button>{" "}
+              <button className="btn btn-secondary">Today</button>
             </div>
             <div className="shopping-list">
               <div className="shopping-list-text">
