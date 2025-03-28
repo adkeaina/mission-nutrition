@@ -15,7 +15,9 @@ import Today from "./today";
 import { useEffect, useState } from "react";
 import Login from "./login";
 import { RecipeListProvider } from "./context/RecipeListContext";
+import CalendarMonth from "./calendarMonth";
 import SearchPage from "./searchPage";
+import Account from './account';
 
 function App() {
   const [data, setData] = useState(null);
@@ -56,23 +58,21 @@ function App() {
         ) : isLoading ? (
           <Loading />
         ) : (
-          isLoading ? (
-            <Loading />
-          ) : (
-            <Router>
-              <Routes>
-                <Route path="/" element={<Navigate to="/home" />} />
-                <Route path="/login" element={<Navigate to="/home" />} />
-                <Route path="/home" element={<Homepage />} />
-                <Route path="/recipe/:recipeId" element={<Recipe />} />
-                <Route path="/search" element={<SearchPage />} />
-                <Route path="/signup" element={<SignUp />} />
-                <Route path="/stats" element={<Stats />} />
-                <Route path="/today" element={<Today />} />
+          <Router>
+            <Routes>
+              <Route path="/" element={<Navigate to="/home" />} />
+              <Route path="/login" element={<Navigate to="/home" />} />
+              <Route path="/home" element={<Homepage />} />
+              <Route path="/recipe/:recipeId" element={<Recipe />} />
+              <Route path="/search" element={<SearchPage />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/stats" element={<Stats />} />
+              <Route path="/today" element={<Today />} />
+              <Route path="/calendarMonth" element={<CalendarMonth />} />
+              <Route path="/account" element={<Account />} />
               </Routes>
-              <NavBar />
-            </Router>
-          )
+            <NavBar />
+          </Router>
         )}
       </RecipeListProvider>
     </>
