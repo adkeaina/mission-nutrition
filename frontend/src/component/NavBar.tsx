@@ -46,7 +46,7 @@ const NavBar: React.FC = () => {
           </Link>
         </Nav.Item>
         <Nav.Item>
-          <Link to="/settings" className="nav-link">
+          <Link to="/account" className="nav-link">
             <img
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/38fcfd4cef327d2ae712f874b5d633c019c29ebc019ad8e6bad257c17c822df4?placeholderIfAbsent=true&apiKey=12e28406f08449fa85c02ddc97075e3b"
                 className="nav-icon"
