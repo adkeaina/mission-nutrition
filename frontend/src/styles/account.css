@@ -1,0 +1,77 @@
+.account-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: #f5f7fa;
+    min-height: calc(100vh - 60px); /* adjust for navbar height if needed */
+}
+
+.account-card {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+.account-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+    text-align: center;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+.account-info {
+    margin-bottom: 2rem;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.75rem 0;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+    .info-row label {
+        font-weight: 600;
+    }
+
+.account-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.edit-btn,
+.logout-btn {
+    flex: 1;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s ease all;
+}
+
+.edit-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+    .edit-btn:hover {
+        background-color: #0056b3;
+    }
+
+.logout-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+    .logout-btn:hover {
+        background-color: #a71d2a;
+    }

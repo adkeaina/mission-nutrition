@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import Login from "./login";
 import { RecipeListProvider } from "./context/RecipeListContext";
 import SearchPage from "./searchPage";
+import Account from './account';
 
 function App() {
   const [data, setData] = useState(null);
@@ -69,7 +70,8 @@ function App() {
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/stats" element={<Stats />} />
                 <Route path="/today" element={<Today />} />
-              </Routes>
+                <Route path="/account" element={<Account />} />
+                </Routes>
               <NavBar />
             </Router>
           )

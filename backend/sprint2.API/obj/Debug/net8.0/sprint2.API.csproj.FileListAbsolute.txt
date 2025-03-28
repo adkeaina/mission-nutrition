@@ -1,8 +1,0 @@
-C:\Users\porte\OneDrive\IS 401\mission-nutrition\backend\sprint2.API\obj\Debug\net8.0\sprint2.API.csproj.AssemblyReference.cache
-C:\Users\porte\OneDrive\IS 401\mission-nutrition\backend\sprint2.API\obj\Debug\net8.0\sprint2.API.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\porte\OneDrive\IS 401\mission-nutrition\backend\sprint2.API\obj\Debug\net8.0\sprint2.API.AssemblyInfoInputs.cache
-C:\Users\porte\OneDrive\IS 401\mission-nutrition\backend\sprint2.API\obj\Debug\net8.0\sprint2.API.AssemblyInfo.cs
-C:\Users\porte\OneDrive\IS 401\mission-nutrition\backend\sprint2.API\obj\Debug\net8.0\sprint2.API.csproj.CoreCompileInputs.cache
-C:\Users\porte\OneDrive\IS 401\mission-nutrition\backend\sprint2.API\obj\Debug\net8.0\sprint2.API.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\porte\OneDrive\IS 401\mission-nutrition\backend\sprint2.API\obj\Debug\net8.0\sprint2.API.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\porte\OneDrive\IS 401\mission-nutrition\backend\sprint2.API\obj\Debug\net8.0\sprint2.API.sourcelink.json
