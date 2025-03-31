@@ -143,7 +143,52 @@ namespace sprint2.API.Controllers
             return await _context.SignIns.ToListAsync();
         }
         
-        
+        [HttpGet("GetRecipe")]
+        public IActionResult GetRecipeById([FromQuery] int recipeId)
+        {
+            if (recipeId <= 0)
+            {
+                return BadRequest("Invalid recipeId.");
+            }
+
+            var recipe = _context.Recipes
+                .Include(r => r.RecipeIngredients)
+                .ThenInclude(ri => ri.Ingredient)
+                .Include(r => r.RecipeSteps)
+                .FirstOrDefault(r => r.RecipeId == recipeId);
+
+            if (recipe == null)
+            {
+                return NotFound("Recipe not found.");
+            }
+
+            return Ok(new
+            {
+                recipeID = recipe.RecipeId,
+                recipeName = recipe.RecipeName,
+                timeToPrepare = recipe.TimeToPrepare,
+                starRating = recipe.StarRating,
+                servings = recipe.Servings,
+                mealOfTheDay = recipe.MealOfTheDay,
+                ingredients = recipe.RecipeIngredients.Select(ri => new
+                {
+                    ingredientId = ri.Ingredient.IngredientId, // No ingredient name
+                    quantity = ri.Quantity,
+                    unit = ri.Unit,
+                    protein = ri.Ingredient.Protein,
+                    fat = ri.Ingredient.Fat,
+                    carbohydrates = ri.Ingredient.Carbohydrates
+                }).ToList(),
+                steps = recipe.RecipeSteps.Select(s => new
+                {
+                    stepNumber = s.StepNumber,
+                    stepText = s.StepText
+                }).ToList()
+            });
+        }
+
+
+
 
 
 
