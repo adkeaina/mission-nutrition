@@ -109,6 +109,27 @@ namespace sprint2.API.Controllers
                 TotalNumRecipes = totalNumRecipes
             });
         }
+        
+        [HttpGet("AllRecipes")]
+        public IActionResult GetAllRecipes([FromQuery] string userName, [FromQuery] int mealDate)
+        {
+            if (string.IsNullOrEmpty(userName))
+            {
+                return BadRequest("Username is required.");
+            }
+
+            var query = _context.PlannedMeals
+                .Where(pm => pm.Username == userName && pm.MealDate == mealDate)
+                .Select(pm => pm.Recipe)
+                .ToList();
+
+            return Ok(new
+            {
+                Recipes = query,
+                TotalRecipes = query.Count
+            });
+        }
+
 
 
         
