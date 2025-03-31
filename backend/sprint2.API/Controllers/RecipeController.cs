@@ -181,7 +181,6 @@ public async Task<IActionResult> DeleteUser(string username)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize)
                 .ToList();
-        
             return Ok(new
             {
                 Recipes = recipeList,
