@@ -3,7 +3,7 @@ using sprint2.API.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Updated services to the container.
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;

@@ -172,7 +172,7 @@ namespace sprint2.API.Controllers
                 mealOfTheDay = recipe.MealOfTheDay,
                 ingredients = recipe.RecipeIngredients.Select(ri => new
                 {
-                    ingredientId = ri.Ingredient.IngredientId, // No ingredient name
+                    ingredientId = ri.Ingredient.IngredientId, 
                     quantity = ri.Quantity,
                     unit = ri.Unit,
                     protein = ri.Ingredient.Protein,
