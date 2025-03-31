@@ -18,6 +18,7 @@ import { RecipeListProvider } from "./context/RecipeListContext";
 import CalendarMonth from "./calendarMonth";
 import SearchPage from "./searchPage";
 import Account from './account';
+import RecordMacros from "./recordMacros";
 
 function App() {
   const [data, setData] = useState(null);
@@ -67,6 +68,7 @@ function App() {
               <Route path="/search" element={<SearchPage />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/stats" element={<Stats />} />
+              <Route path="/record-macros" element={<RecordMacros />} /> 
               <Route path="/today" element={<Today />} />
               <Route path="/calendarMonth" element={<CalendarMonth />} />
               <Route path="/account" element={<Account />} />
