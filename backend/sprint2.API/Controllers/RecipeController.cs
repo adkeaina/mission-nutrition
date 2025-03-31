@@ -130,6 +130,19 @@ namespace sprint2.API.Controllers
             });
         }
         
+        [HttpGet("users-other")]
+        public async Task<ActionResult<IEnumerable<SignIn>>> GetUsers([FromQuery] string? username)
+        {
+            if (!string.IsNullOrEmpty(username))
+            {
+                return await _context.SignIns
+                    .Where(u => u.Username.Contains(username))
+                    .ToListAsync();
+            }
+    
+            return await _context.SignIns.ToListAsync();
+        }
+        
         
 
 
