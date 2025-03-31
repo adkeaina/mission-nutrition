@@ -74,5 +74,45 @@ namespace sprint2.API.Controllers
             return await _context.MacroTrackers.ToListAsync();
         }
         
+        
+        [HttpGet("get-time")]
+        public IActionResult GetTime(int pageSize = 5, int pageNum = 1, [FromQuery] List<string>? selectedTime = null)
+        {
+            if (pageSize <= 0) pageSize = 5;
+            if (pageNum < 1) pageNum = 1;
+
+            var query = _context.Recipes.AsQueryable();
+
+            if (selectedTime != null && selectedTime.Any())
+            {
+                query = query.Where(b => b.TimeToPrepare.HasValue);
+
+                var filteredQuery = query.Where(b =>
+                    (selectedTime.Contains("<15 minutes") && b.TimeToPrepare <= 15) ||
+                    (selectedTime.Contains("16-30 minutes") && b.TimeToPrepare >= 16 && b.TimeToPrepare <= 30) ||
+                    (selectedTime.Contains("31+ minutes") && b.TimeToPrepare > 30)
+                );
+
+                query = filteredQuery;
+            }
+
+            var totalNumRecipes = query.Count();
+
+            var recipeList = query
+                .Skip((pageNum - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            return Ok(new
+            {
+                Recipes = recipeList,
+                TotalNumRecipes = totalNumRecipes
+            });
+        }
+
+
+        
+
+        
     }
 }
