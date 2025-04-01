@@ -17,13 +17,31 @@ import Login from "./login";
 import { RecipeListProvider } from "./context/RecipeListContext";
 import CalendarMonth from "./calendarMonth";
 import SearchPage from "./searchPage";
-import Account from './account';
+import Account from "./account";
+import RecordMacros from "./recordMacros";
+import ConfirmationPage from "./ConfirmationPage";
 
 function App() {
   const [data, setData] = useState(null);
   console.log(data);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(true); //TODO: Change to false (true is for testing)
+
+  // Shared macros state for updating stats from RecordMacros.
+  const [macros, setMacros] = useState({
+    protein: { current: 25, goal: 60 },
+    fat: { current: 10, goal: 60 },
+    carbs: { current: 35, goal: 60 },
+  });
+
+  // Function to update the current macro values.
+  const updateMacros = (newMacros: { protein: number; fat: number; carbs: number }) => {
+    setMacros((prevMacros) => ({
+      protein: { ...prevMacros.protein, current: prevMacros.protein.current + newMacros.protein },
+      fat: { ...prevMacros.fat, current: prevMacros.fat.current + newMacros.fat },
+      carbs: { ...prevMacros.carbs, current: prevMacros.carbs.current + newMacros.carbs },
+    }));
+  };
 
   const handleLogin = (isAuthenticated: boolean) => {
     setIsLoggedIn(isAuthenticated); // This will update the login state
@@ -66,11 +84,15 @@ function App() {
               <Route path="/recipe/:recipeId" element={<Recipe />} />
               <Route path="/search" element={<SearchPage />} />
               <Route path="/signup" element={<SignUp />} />
-              <Route path="/stats" element={<Stats />} />
+              {/* Pass the shared macros state to Stats */}
+              <Route path="/stats" element={<Stats macros={macros} />} />
+              {/* Pass the update function to RecordMacros */}
+              <Route path="/record-macros" element={<RecordMacros updateMacros={updateMacros} />} /> 
+              <Route path="/confirmation" element={<ConfirmationPage />} />
               <Route path="/today" element={<Today />} />
               <Route path="/calendarMonth" element={<CalendarMonth />} />
               <Route path="/account" element={<Account />} />
-              </Routes>
+            </Routes>
             <NavBar />
           </Router>
         )}
