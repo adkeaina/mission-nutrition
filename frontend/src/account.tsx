@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles/account.css";
 import { useNavigate } from "react-router-dom";
 
+const API_BASE = "https://localhost:5001/api/database"; // update this if needed
+const USER_ID = 1; // replace with actual user ID from auth
+
 interface UserInfo {
+    id: number;
     username: string;
     email: string;
     firstName: string;
@@ -11,13 +15,24 @@ interface UserInfo {
 
 const Account: React.FC = () => {
     const navigate = useNavigate();
-
-    const [user, setUser] = useState<UserInfo>({
-        username: "user123",
-        email: "user@example.com",
-        firstName: "John",
-        lastName: "Doe",
+    const [user, setUser] = useState<UserInfo | null>(null);
+    const [editing, setEditing] = useState(false);
+    const [form, setForm] = useState({
+        username: "",
+        email: "",
+        firstName: "",
+        lastName: "",
     });
+
+    useEffect(() => {
+        fetch(`${API_BASE}/user/${USER_ID}`)
+            .then(res => res.json())
+            .then(data => {
+                setUser(data);
+                setForm(data);
+            })
+            .catch(console.error);
+    }, []);
 
     const handleLogout = () => {
         console.log("User logged out");
@@ -25,34 +40,69 @@ const Account: React.FC = () => {
     };
 
     const handleEdit = () => {
-        console.log("Edit account - not implemented");
+        setEditing(true);
     };
+
+    const handleSave = async () => {
+        try {
+            await fetch(`${API_BASE}/user/${USER_ID}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ ...form, id: USER_ID }),
+            });
+            setUser(form as UserInfo);
+            setEditing(false);
+            alert("Profile updated!");
+        } catch (error) {
+            console.error("Update failed:", error);
+        }
+    };
+
+    const handleDelete = async () => {
+        if (!window.confirm("Are you sure you want to delete your account?")) return;
+        try {
+            await fetch(`${API_BASE}/user/${USER_ID}`, {
+                method: "DELETE",
+            });
+            alert("Account deleted");
+            navigate("/login");
+        } catch (error) {
+            console.error("Delete failed:", error);
+        }
+    };
+
+    if (!user) return <div>Loading...</div>;
 
     return (
         <div className="account-wrapper">
             <div className="account-card">
                 <h1 className="account-title">My Profile</h1>
                 <div className="account-info">
-                    <div className="info-row">
-                        <label>Username:</label>
-                        <span>{user.username}</span>
-                    </div>
-                    <div className="info-row">
-                        <label>Email:</label>
-                        <span>{user.email}</span>
-                    </div>
-                    <div className="info-row">
-                        <label>First Name:</label>
-                        <span>{user.firstName}</span>
-                    </div>
-                    <div className="info-row">
-                        <label>Last Name:</label>
-                        <span>{user.lastName}</span>
-                    </div>
+                    {["username", "email", "firstName", "lastName"].map((field) => (
+                        <div className="info-row" key={field}>
+                            <label>{field.charAt(0).toUpperCase() + field.slice(1)}:</label>
+                            {editing ? (
+                                <input
+                                    type="text"
+                                    value={(form as any)[field]}
+                                    onChange={(e) =>
+                                        setForm({ ...form, [field]: e.target.value })
+                                    }
+                                />
+                            ) : (
+                                <span>{(user as any)[field]}</span>
+                            )}
+                        </div>
+                    ))}
                 </div>
                 <div className="account-buttons">
-                    <button className="edit-btn" onClick={handleEdit}>Edit</button>
+                    {editing ? (
+                        <button className="edit-btn" onClick={handleSave}>Save</button>
+                    ) : (
+                        <button className="edit-btn" onClick={handleEdit}>Edit</button>
+                    )}
                     <button className="logout-btn" onClick={handleLogout}>Logout</button>
+                    <button className="logout-btn" onClick={handleDelete}>Delete</button>
                 </div>
             </div>
         </div>
