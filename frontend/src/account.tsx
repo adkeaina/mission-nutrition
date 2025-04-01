@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 const API_BASE = "https://localhost:5001/api/user";
 
-
 interface UserInfo {
   username: string;
   password: string; // Optional to store here, but included if needed
