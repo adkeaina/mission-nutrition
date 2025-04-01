@@ -2,3 +2,5 @@
 *.code-workspace
 backend/sprint2.API/bin/
 backend/sprint2.API/obj/
+.DS_Store
+backend/.DS_Store
