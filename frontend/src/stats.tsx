@@ -2,18 +2,35 @@ import React, { useState, useEffect } from "react";
 import "./styles/stats.css";
 import { useNavigate } from "react-router-dom";
 
-const Stats: React.FC = () => {
-  const navigate = useNavigate();
-  const [macros, setMacros] = useState({
-    protein: { current: 25, goal: 60 },
-    fat: { current: 60, goal: 60 },
-    carbs: { current: 35, goal: 60 },
-  });
+interface Macro {
+  current: number;
+  goal: number;
+}
 
-  const [waterCount, setWaterCount] = useState(6);
+interface StatsProps {
+  macros: {
+    protein: Macro;
+    fat: Macro;
+    carbs: Macro;
+  };
+}
+
+const Stats: React.FC<StatsProps> = ({ macros }) => {
+  const navigate = useNavigate();
+
+  // Initialize waterCount from localStorage or default to 6
+  const [waterCount, setWaterCount] = useState<number>(() => {
+    const storedCount = localStorage.getItem("waterCount");
+    return storedCount ? parseInt(storedCount) : 6;
+  });
   const totalBottles = 8;
 
-  const getPercent = (macro: { current: number; goal: number }) =>
+  // Persist waterCount changes in localStorage
+  useEffect(() => {
+    localStorage.setItem("waterCount", waterCount.toString());
+  }, [waterCount]);
+
+  const getPercent = (macro: Macro) =>
     Math.round((macro.current / macro.goal) * 100);
 
   const getMacroColor = (percent: number) => {
@@ -23,7 +40,6 @@ const Stats: React.FC = () => {
   };
 
   const handleRecordMacros = () => {
-    // Instead of alert, navigate to your new page:
     navigate("/record-macros");
   };
 
@@ -46,10 +62,12 @@ const Stats: React.FC = () => {
         <div className="macro-charts">
           {Object.entries(macros).map(([key, macro]) => {
             const percent = getPercent(macro);
+            // Cap the drawing percentage at 100% for visual consistency
+            const displayedPercent = percent > 100 ? 100 : percent;
             const radius = 60;
             const circumference = 2 * Math.PI * radius;
             const strokeDashoffset =
-              circumference - (percent / 100) * circumference;
+              circumference - (displayedPercent / 100) * circumference;
 
             return (
               <div className="chart-item" key={key}>

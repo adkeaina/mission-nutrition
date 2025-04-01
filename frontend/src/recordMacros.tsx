@@ -1,13 +1,25 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const RecordMacros: React.FC = () => {
+interface RecordMacrosProps {
+  updateMacros: (newMacros: { protein: number; fat: number; carbs: number }) => void;
+}
+
+const RecordMacros: React.FC<RecordMacrosProps> = ({ updateMacros }) => {
+  const navigate = useNavigate();
   const [protein, setProtein] = useState("");
   const [fat, setFat] = useState("");
   const [carbs, setCarbs] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert(`Protein: ${protein}, Fat: ${fat}, Carbs: ${carbs}`);
+    const newMacros = {
+      protein: Number(protein),
+      fat: Number(fat),
+      carbs: Number(carbs),
+    };
+    updateMacros(newMacros);
+    navigate("/confirmation", { state: newMacros });
   };
 
   return (
@@ -16,7 +28,7 @@ const RecordMacros: React.FC = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "80vh", // fills more vertical space
+        height: "80vh",
       }}
     >
       <div
