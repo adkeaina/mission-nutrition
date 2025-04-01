@@ -1,72 +1,13 @@
 .homepage {
   display: flex;
-  margin-left: auto;
-  margin-right: auto;
   width: 100%;
   flex-direction: column;
   overflow: hidden;
   align-items: center;
-}
-
-.status-bar {
-  background-color: rgba(255, 105, 97, 1);
-  align-self: stretch;
-  width: 100%;
-  padding-top: 21px;
-}
-
-.status-bar-frame {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.time-display {
-  align-self: stretch;
-  margin: auto 0;
-  padding: 0 6px 0 16px;
-  font-family:
-    SF Pro,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
-  font-size: 17px;
-  color: rgba(255, 255, 255, 1);
-  font-weight: 590;
-  white-space: nowrap;
-  text-align: center;
-  line-height: 1;
-  flex: 1 1 0%;
-}
-
-.dynamic-island {
-  align-self: stretch;
-  display: flex;
-  margin: auto 0;
-  width: 124px;
-  flex-shrink: 0;
-  height: 10px;
-}
-
-.status-levels {
-  align-self: stretch;
-  display: flex;
-  margin: auto 0;
-  padding: 0 16px 0 6px;
-  align-items: center;
-  gap: 7px;
-  justify-content: center;
-  flex: 1 1 0%;
-}
-
-.status-icon {
-  object-fit: contain;
-  object-position: center;
-  align-self: stretch;
-  margin: auto 0;
-  flex-shrink: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+  max-width: 480px;
+  margin-top: 50px;
 }
 
 .welcome-text {
@@ -115,19 +56,7 @@
   font-weight: 700;
   text-align: center;
   line-height: 22px;
-}
-
-.action-button-first {
-  margin-top: 29px;
-}
-
-.action-button-second {
   margin-top: 25px;
-}
-
-.action-button-third {
-  margin-top: 24px;
-  padding: 28px 70px;
 }
 
 .action-icon {
@@ -233,51 +162,4 @@
   right: -8px;
   top: -8px;
   width: 36px;
-}
-
-.nav-bar {
-  background-color: rgba(255, 255, 255, 1);
-  border: 1px solid rgba(0, 0, 0, 1);
-  align-self: stretch;
-  display: flex;
-  margin-top: 27px;
-  min-height: 68px;
-  width: 100%;
-  align-items: stretch;
-  font-family:
-    Inter,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
-  font-size: 14px;
-  color: #757575;
-  font-weight: 600;
-  white-space: nowrap;
-  text-align: center;
-  line-height: 1;
-  justify-content: center;
-}
-
-.nav-button {
-  display: flex;
-  padding: 8px 12px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: start;
-}
-
-.nav-button.active {
-  color: #1e1e1e;
-}
-
-.nav-icon {
-  aspect-ratio: 1;
-  object-fit: contain;
-  object-position: center;
-  width: 24px;
-}
-
-.nav-label {
-  margin-top: 8px;
 }
