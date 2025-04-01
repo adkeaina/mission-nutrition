@@ -55,8 +55,8 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         </div>
 
         <form onSubmit={handleSubmit} className="login-form">
-          <div className="input-group">
-            <div className="input-wrapper">
+          <div className="input-group-login">
+            <div className="input-wrapper-login">
               <input
                 type="text"
                 name="username"
@@ -69,8 +69,8 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
             </div>
           </div>
 
-          <div className="input-group">
-            <div className="input-wrapper">
+          <div className="input-group-login">
+            <div className="input-wrapper-login">
               <input
                 type="password"
                 name="password"

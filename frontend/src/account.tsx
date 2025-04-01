@@ -83,9 +83,10 @@ const Account: React.FC = () => {
         <div className="account-info">
           {["username", "password", "firstName", "lastName"].map((field) => (
             <div className="info-row" key={field}>
-              <label>{field.charAt(0).toUpperCase() + field.slice(1)}:</label>
+              <label className="info-row-label">{field.charAt(0).toUpperCase() + field.slice(1)}:</label>
               {editing ? (
                 <input
+                  className="account-input"
                   type="text"
                   value={(form as any)[field]}
                   onChange={(e) =>

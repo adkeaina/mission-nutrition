@@ -1,4 +1,4 @@
-import "./App.css";
+import "./styles/App.css";
 import NavBar from "./component/NavBar";
 import Homepage from "./home";
 import {
@@ -25,7 +25,7 @@ function App() {
   const [data, setData] = useState(null);
   console.log(data);
   const [isLoading, setIsLoading] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(true); //TODO: Change to false (true is for testing)
+  const [isLoggedIn, setIsLoggedIn] = useState(false); //TODO: Change to false (true is for testing)
 
   // Shared macros state for updating stats from RecordMacros.
   const [macros, setMacros] = useState({
