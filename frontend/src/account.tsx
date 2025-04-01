@@ -100,72 +100,73 @@ const Account: React.FC = () => {
 const USER_ID = 1; // replace with actual user ID from auth
 
 interface UserInfo {
-    id: number;
-    username: string;
-    email: string;
-    firstName: string;
-    lastName: string;
+  username: string;
+  password: string; // Optional to store here, but included if needed
+  firstName: string;
+  lastName: string;
 }
 
 const Account: React.FC = () => {
-    const navigate = useNavigate();
-    const [user, setUser] = useState<UserInfo | null>(null);
-    const [editing, setEditing] = useState(false);
-    const [form, setForm] = useState({
-        username: "",
-        email: "",
-        firstName: "",
-        lastName: "",
-    });
+  const navigate = useNavigate();
+  const username = localStorage.getItem("username"); // Should be set during login
+  const [user, setUser] = useState<UserInfo | null>(null);
+  const [editing, setEditing] = useState(false);
+  const [form, setForm] = useState({
+    username: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+  });
 
-    useEffect(() => {
-        fetch(`${API_BASE}/user/${USER_ID}`)
-            .then(res => res.json())
-            .then(data => {
-                setUser(data);
-                setForm(data);
-            })
-            .catch(console.error);
-    }, []);
+  useEffect(() => {
+    if (!username) return;
 
-    const handleLogout = () => {
-        console.log("User logged out");
-        navigate("/login");
-    };
+    fetch(`${API_BASE}/user/${username}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setUser(data);
+        setForm(data);
+      })
+      .catch(console.error);
+  }, [username]);
 
-    const handleEdit = () => {
-        setEditing(true);
-    };
+  const handleLogout = () => {
+    localStorage.removeItem("username");
+    navigate("/login");
+  };
 
-    const handleSave = async () => {
-        try {
-            await fetch(`${API_BASE}/user/${USER_ID}`, {
-                method: "PUT",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ ...form, id: USER_ID }),
-            });
-            setUser(form as UserInfo);
-            setEditing(false);
-            alert("Profile updated!");
-        } catch (error) {
-            console.error("Update failed:", error);
-        }
-    };
+  const handleEdit = () => {
+    setEditing(true);
+  };
 
-    const handleDelete = async () => {
-        if (!window.confirm("Are you sure you want to delete your account?")) return;
-        try {
-            await fetch(`${API_BASE}/user/${USER_ID}`, {
-                method: "DELETE",
-            });
-            alert("Account deleted");
-            navigate("/login");
-        } catch (error) {
-            console.error("Delete failed:", error);
-        }
-    };
+  const handleSave = async () => {
+    try {
+      await fetch(`${API_BASE}/user/${username}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      setUser(form);
+      setEditing(false);
+      alert("Profile updated!");
+    } catch (error) {
+      console.error("Update failed:", error);
+    }
+  };
 
-    if (!user) return <div>Loading...</div>;
+  const handleDelete = async () => {
+    if (!window.confirm("Are you sure you want to delete your account?")) return;
+    try {
+      await fetch(`${API_BASE}/user/${username}`, {
+        method: "DELETE",
+      });
+      alert("Account deleted");
+      localStorage.removeItem("username");
+      navigate("/login");
+    } catch (error) {
+      console.error("Delete failed:", error);
+    }
+  };
 
     return (
         <div className="account-wrapper">
