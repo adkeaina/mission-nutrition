@@ -67,44 +67,44 @@ namespace sprint2.API.Controllers
             return await _context.SignIns.ToListAsync();
         }
 
-        [HttpGet("user/{id}")]
-        public async Task<ActionResult<SignIn>> GetUserById(int id)
-        {
-            var user = await _context.SignIns.FindAsync(id);
-            if (user == null) return NotFound();
-            return user;
-        }
+        // [HttpGet("user/{id}")]
+        // public async Task<ActionResult<SignIn>> GetUserById(int id)
+        // {
+        //     var user = await _context.SignIns.FindAsync(id);
+        //     if (user == null) return NotFound();
+        //     return user;
+        // }
 
-        [HttpPut("user/{id}")]
-        public async Task<IActionResult> UpdateUser(int id, SignIn updatedUser)
-        {
-            if (id != updatedUser.Id) return BadRequest();
+        // [HttpPut("user/{id}")]
+        // public async Task<IActionResult> UpdateUser(int id, SignIn updatedUser)
+        // {
+        //     if (id != updatedUser.Id) return BadRequest();
 
-            _context.Entry(updatedUser).State = EntityState.Modified;
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!_context.SignIns.Any(e => e.Id == id)) return NotFound();
-                throw;
-            }
+        //     _context.Entry(updatedUser).State = EntityState.Modified;
+        //     try
+        //     {
+        //         await _context.SaveChangesAsync();
+        //     }
+        //     catch (DbUpdateConcurrencyException)
+        //     {
+        //         if (!_context.SignIns.Any(e => e.Id == id)) return NotFound();
+        //         throw;
+        //     }
 
-            return NoContent();
-        }
+        //     return NoContent();
+        // }
 
-        [HttpDelete("user/{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
-        {
-            var user = await _context.SignIns.FindAsync(id);
-            if (user == null) return NotFound();
+        // [HttpDelete("user/{id}")]
+        // public async Task<IActionResult> DeleteUser(int id)
+        // {
+        //     var user = await _context.SignIns.FindAsync(id);
+        //     if (user == null) return NotFound();
 
-            _context.SignIns.Remove(user);
-            await _context.SaveChangesAsync();
+        //     _context.SignIns.Remove(user);
+        //     await _context.SaveChangesAsync();
 
-            return NoContent();
-        }
+        //     return NoContent();
+        // }
         /*
          * [HttpGet("user/{username}")]
 public async Task<ActionResult<SignIn>> GetUserByUsername(string username)

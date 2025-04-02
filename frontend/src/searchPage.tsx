@@ -1,5 +1,5 @@
 import { useState } from "react";
-import TimeFilter from "./component/timeFilter";
+import TimeFilter from "./component/TimeFilter";
 import RecipeCardList from "./component/RecipeCardList"; // Import RecipeCardList
 
 function ParentComponent() {
@@ -13,7 +13,7 @@ function ParentComponent() {
 
   return (
     <div className="container mt-4">
-      <div className="row">
+      <div className="row text-white">
         <h1>
           <strong>Recipes</strong>
         </h1>

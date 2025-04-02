@@ -1,8 +1,8 @@
 export interface Recipes {
-  recipeID: number;
+  recipeId: number;
   recipeName: string;
-  timetoPrepare: number;
+  timeToPrepare: number;
   starRating: number;
   servings: string;
-  MealOftheDay: number;
+  mealOfTheDay: string;
 }
