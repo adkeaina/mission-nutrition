@@ -44,12 +44,12 @@
   text-align: left;
 }
 
-.ingredients-list li {
+.ingredients-list-li {
   position: relative;
   padding-left: 20px;
 }
 
-.ingredients-list li::before {
+.ingredients-list-li::before {
   content: "•";
   position: absolute;
   left: 0;
@@ -108,7 +108,7 @@
   cursor: pointer;
 }
 
-.action-button-recipe span {
+.action-button-recipe-span {
   color: #fff;
   font-size: 14px;
   font-weight: 400;

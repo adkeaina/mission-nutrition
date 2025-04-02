@@ -29,10 +29,13 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Handle login logic here
-    if (formData.username === "user" && formData.password === "password") {
+    const response = await fetch(`https:localhost:5000/api/Database/user/${formData.username}`);
+    const data = await response.json();
+    if (data && data.password === formData.password) {
+      localStorage.setItem("username", formData.username); // Store username in local storage
       onLogin(true); // Call the onLogin prop function with true
     }
   };
@@ -55,8 +58,8 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         </div>
 
         <form onSubmit={handleSubmit} className="login-form">
-          <div className="input-group">
-            <div className="input-wrapper">
+          <div className="input-group-login">
+            <div className="input-wrapper-login">
               <input
                 type="text"
                 name="username"
@@ -69,8 +72,8 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
             </div>
           </div>
 
-          <div className="input-group">
-            <div className="input-wrapper">
+          <div className="input-group-login">
+            <div className="input-wrapper-login">
               <input
                 type="password"
                 name="password"

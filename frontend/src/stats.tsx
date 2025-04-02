@@ -50,12 +50,6 @@ const Stats: React.FC<StatsProps> = ({ macros }) => {
         rel="stylesheet"
       />
       <div className="stats-container">
-        <div className="status-bar">
-          <div className="time">9:41</div>
-          <div className="status-icons">
-            {/* Status Icon SVG (unchanged) */}
-          </div>
-        </div>
 
         <h1 className="stats-title">Stats</h1>
 
@@ -169,29 +163,6 @@ const Stats: React.FC<StatsProps> = ({ macros }) => {
         <button className="record-button" onClick={handleRecordMacros}>
           Record Macros
         </button>
-
-        <nav className="navigation">
-          <div className="nav-item">
-            <i className="ti ti-search nav-icon" />
-            <span>Search</span>
-          </div>
-          <div className="nav-item">
-            <i className="ti ti-calendar nav-icon" />
-            <span>Calendar</span>
-          </div>
-          <div className="nav-item">
-            <i className="ti ti-home nav-icon" />
-            <span>Home</span>
-          </div>
-          <div className="nav-item active">
-            <i className="ti ti-chart-bar nav-icon" />
-            <span>Stats</span>
-          </div>
-          <div className="nav-item">
-            <i className="ti ti-settings nav-icon" />
-            <span>Settings</span>
-          </div>
-        </nav>
       </div>
     </>
   );

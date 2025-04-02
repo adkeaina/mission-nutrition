@@ -102,10 +102,10 @@ const Today: React.FC = () => {
           <div className="controls">
             <div className="btn-group">
               <Link to="/CalendarMonth" className="nav-link">
-                <button className="btn btn-secondary">Month</button>
+                <button className="btn bttn btn-secondary">Month</button>
               </Link>
-              <button className="btn btn-secondary active">Week</button>
-              <button className="btn btn-secondary">Today</button>
+              <button className="btn bttn btn-secondary active">Week</button>
+              <button className="btn bttn btn-secondary">Today</button>
             </div>
             <div className="shopping-list">
               <div className="shopping-list-text">

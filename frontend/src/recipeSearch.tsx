@@ -28,7 +28,7 @@ const RecipeSearch: React.FC = () => {
           </div>
           <input
             type="text"
-            className="search-input"
+            className="search-input-search"
             placeholder="Search for recipe"
           />
           <div className="search-button">
@@ -47,16 +47,16 @@ const RecipeSearch: React.FC = () => {
           </div>
         </div>
 
-        <div className="filter-chips">
-          <button className="filter-chip">&lt;15 minutes</button>
-          <button className="filter-chip">16-30 minutes</button>
-          <button className="filter-chip">31+ minutes</button>
+        <div className="filter-chipss">
+          <button className="filter-chip-search">&lt;15 minutes</button>
+          <button className="filter-chip-search">16-30 minutes</button>
+          <button className="filter-chip-search">31+ minutes</button>
         </div>
 
         <div className="recipe-list">
           <div className="recipe-card">
             <div className="recipe-info">
-              <h2 className="recipe-title">Breakfast Burritos</h2>
+              <h2 className="recipe-title-search">Breakfast Burritos</h2>
               <p className="recipe-time">10 minutes</p>
               <p className="recipe-servings">Feeds 2-4 people</p>
               <div className="recipe-rating">
@@ -86,7 +86,7 @@ const RecipeSearch: React.FC = () => {
 
           <div className="recipe-card">
             <div className="recipe-info">
-              <h2 className="recipe-title">Spaghetti</h2>
+              <h2 className="recipe-title-search">Spaghetti</h2>
               <p className="recipe-time">25-30 minutes</p>
               <p className="recipe-servings">Feeds 2 people</p>
               <div className="recipe-rating">
@@ -116,7 +116,7 @@ const RecipeSearch: React.FC = () => {
 
           <div className="recipe-card">
             <div className="recipe-info">
-              <h2 className="recipe-title">Carne Asada Tacos</h2>
+              <h2 className="recipe-title-search">Carne Asada Tacos</h2>
               <p className="recipe-time">30 minutes</p>
               <p className="recipe-servings">Feeds 2-4 people</p>
               <div className="recipe-rating">
@@ -146,7 +146,7 @@ const RecipeSearch: React.FC = () => {
 
           <div className="recipe-card">
             <div className="recipe-info">
-              <h2 className="recipe-title">Mac and Cheese</h2>
+              <h2 className="recipe-title-search">Mac and Cheese</h2>
               <p className="recipe-time">12 minutes</p>
               <p className="recipe-servings">Feeds 2 people</p>
               <div className="recipe-rating">
@@ -176,7 +176,7 @@ const RecipeSearch: React.FC = () => {
 
           <div className="recipe-card">
             <div className="recipe-info">
-              <h2 className="recipe-title">Empanadas</h2>
+              <h2 className="recipe-title-search">Empanadas</h2>
               <p className="recipe-time">25-30 minutes</p>
               <p className="recipe-servings">Feeds 2 people</p>
               <div className="recipe-rating">

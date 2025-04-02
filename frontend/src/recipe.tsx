@@ -28,9 +28,9 @@ const Recipe: React.FC = () => {
           <h2 className="section-title">Ingredients</h2>
           <ul className="ingredients-list">
             {fullRecipe?.ingredients.map((ingredient) => (
-              <li key={ingredient.ingredientID}>{ingredient.quantity} {ingredient.unit} of {ingredient.ingredientName}</li>
+              <li className="ingredients-list-li" key={ingredient.ingredientID}>{ingredient.quantity} {ingredient.unit} of {ingredient.ingredientName}</li>
             )) || (
-              <li><i>No ingredients</i></li>
+              <li className="ingredients-list-li"><i>No ingredients</i></li>
             )}
           </ul>
         </section>
@@ -80,7 +80,7 @@ const Recipe: React.FC = () => {
                 strokeLinejoin="round"
               />
             </svg>
-            <span>Log Meal</span>
+            <span className="action-button-recipe-span">Log Meal</span>
           </button>
           <button className="action-button-recipe" onClick={() => alert('Added to week!')}>
             <svg
@@ -95,7 +95,7 @@ const Recipe: React.FC = () => {
                 fill="white"
               />
             </svg>
-            <span>Add To Week</span>
+            <span className="action-button-recipe-span">Add To Week</span>
           </button>
         </div>
 
