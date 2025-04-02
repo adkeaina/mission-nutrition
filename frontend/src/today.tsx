@@ -7,8 +7,9 @@ const Today: React.FC = () => {
   var newDate = new Date();
   var year = newDate.getFullYear();
   var month = (newDate.getMonth() + 1);
-  var day = newDate.getMonth();
+  var day = newDate.getDate();
   var today = `${year}-${month}-${day}`;
+  console.log(`Today's date: ${today}`);
 
   const username = 'johndoe';
   const [meals, setMeals] = useState<PlannedMeal[]>([]);
@@ -23,30 +24,42 @@ const Today: React.FC = () => {
   
   useEffect(() => {
     const fetchMeals = async () => {
+      console.log('fetching data...')
       const response = await fetch(
-        `https://localhost:5000/api/PlannedMeal?username=${username}&date=${today}`
+        `https://localhost:5000/api/Database/planned-meals` // ?username=${username}&date=${today}
       );
+    
     const data = await response.json();
-    setMeals(data.meals);
+    setMeals(data);
+    console.log(data);
 
-    }
-  })
+
+    };
+    fetchMeals();
+  }, [])
+
+useEffect(() => {
+  console.log("Processing meals... ", meals)
 
   meals.forEach(meal => {
-    if (meal.MealID = 1){
+    console.log("Data: " + meal.mealDate);
+    console.log("Today: " + today);
+    if (meal.mealId == 1 && meal.mealDate === today){
       setBreakfast(meal);
-      setBreakfastLink(`/recipes/${meal.RecipeID}`);  
-    }
-    else if (meal.MealID = 2) {
+      setBreakfastLink(`/recipes/${meal.recipeId}`);  
+      console.log('breakfast link updated to ' + breakfastLink);
+      }
+    else if (meal.mealId == 2 && meal.mealDate === today) {
       setLunch(meal);
-      setLunchLink(`/recipes/${meal.RecipeID}`);  
-
-    }
-    else if (meal.MealID = 3) {
+      setLunchLink(`/recipes/${meal.recipeId}`);  
+      }
+    else if (meal.mealId == 3 && meal.mealDate === today) {
       setDinner(meal)
-      setDinnerLink(`/recipes/${meal.RecipeID}`);  
-    }
-  });
+      setDinnerLink(`/recipes/${meal.recipeId}`);  
+      }
+    });
+  }, meals)
+  
 
   return (
     <>

@@ -9,7 +9,7 @@ public partial class PlannedMeal
 
     public string Username { get; set; } = null!;
 
-    public int MealDate { get; set; }
+    public string MealDate { get; set; }
 
     public int? MealId { get; set; }
 

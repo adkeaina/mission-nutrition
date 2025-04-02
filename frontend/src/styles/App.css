@@ -4,3 +4,17 @@
   margin: 0 auto;
   text-align: center;
 }
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Make the container fill the viewport height */
+  width: 100%; /* Take up full width */
+  background-color: rgba(255, 105, 97, 1); /* Optional: Your background color */
+}
+
+.loading-container img {
+  max-width: 100%; /* Prevent image from overflowing */
+  max-height: 100%; /* Prevent image from overflowing */
+}

@@ -67,84 +67,44 @@ namespace sprint2.API.Controllers
             return await _context.SignIns.ToListAsync();
         }
 
-        // [HttpGet("user/{id}")]
-        // public async Task<ActionResult<SignIn>> GetUserById(int id)
-        // {
-        //     var user = await _context.SignIns.FindAsync(id);
-        //     if (user == null) return NotFound();
-        //     return user;
-        // }
+        [HttpGet("user/{username}")]
+        public async Task<ActionResult<SignIn>> GetUserByUsername(string username)
+        {
+            var user = await _context.SignIns.FindAsync(username);
+            if (user == null) return NotFound();
+            return user;
+        }
 
-        // [HttpPut("user/{id}")]
-        // public async Task<IActionResult> UpdateUser(int id, SignIn updatedUser)
-        // {
-        //     if (id != updatedUser.Id) return BadRequest();
+        [HttpPut("user/{username}")]
+        public async Task<IActionResult> UpdateUser(string username, SignIn updatedUser)
+        {
+            if (username != updatedUser.Username) return BadRequest();
 
-        //     _context.Entry(updatedUser).State = EntityState.Modified;
-        //     try
-        //     {
-        //         await _context.SaveChangesAsync();
-        //     }
-        //     catch (DbUpdateConcurrencyException)
-        //     {
-        //         if (!_context.SignIns.Any(e => e.Id == id)) return NotFound();
-        //         throw;
-        //     }
+            _context.Entry(updatedUser).State = EntityState.Modified;
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!_context.SignIns.Any(e => e.Username == username)) return NotFound();
+                throw;
+            }
 
         //     return NoContent();
         // }
 
-        // [HttpDelete("user/{id}")]
-        // public async Task<IActionResult> DeleteUser(int id)
-        // {
-        //     var user = await _context.SignIns.FindAsync(id);
-        //     if (user == null) return NotFound();
+        [HttpDelete("user/{username}")]
+        public async Task<IActionResult> DeleteUser(string username)
+        {
+            var user = await _context.SignIns.FindAsync(username);
+            if (user == null) return NotFound();
 
         //     _context.SignIns.Remove(user);
         //     await _context.SaveChangesAsync();
 
-        //     return NoContent();
-        // }
-        /*
-         * [HttpGet("user/{username}")]
-public async Task<ActionResult<SignIn>> GetUserByUsername(string username)
-{
-    var user = await _context.SignIns.FindAsync(username);
-    if (user == null) return NotFound();
-    return user;
-}
-
-[HttpPut("user/{username}")]
-public async Task<IActionResult> UpdateUser(string username, SignIn updatedUser)
-{
-    if (username != updatedUser.Username) return BadRequest();
-
-    _context.Entry(updatedUser).State = EntityState.Modified;
-    try
-    {
-        await _context.SaveChangesAsync();
-    }
-    catch (DbUpdateConcurrencyException)
-    {
-        if (!_context.SignIns.Any(e => e.Username == username)) return NotFound();
-        throw;
-    }
-
-    return NoContent();
-}
-
-[HttpDelete("user/{username}")]
-public async Task<IActionResult> DeleteUser(string username)
-{
-    var user = await _context.SignIns.FindAsync(username);
-    if (user == null) return NotFound();
-
-    _context.SignIns.Remove(user);
-    await _context.SaveChangesAsync();
-
-    return NoContent();
-}
-*/
+            return NoContent();
+        }
 
         // *************** MACRO TRACKER ENDPOINTS *****************
         [HttpGet("macro-tracker")]
@@ -190,7 +150,7 @@ public async Task<IActionResult> DeleteUser(string username)
         }
         
         [HttpGet("AllRecipes")]
-        public IActionResult GetAllRecipes([FromQuery] string userName, [FromQuery] int mealDate)
+        public IActionResult GetAllRecipes([FromQuery] string userName, [FromQuery] string mealDate)
         {
             if (string.IsNullOrEmpty(userName))
             {
