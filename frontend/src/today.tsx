@@ -77,7 +77,7 @@ useEffect(() => {
               <Link to={breakfastLink}>
 
                 <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/bb5417f23ba8c8598e1943394c33bd18bc2389fd"
+                  src="https://www.southernliving.com/thmb/Nr_TIEuEu9sHm2sRvcaYTDaNYbs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Breakfast_Sandwich_001-b07f371cd3044df4ab7bf664052c2267.jpg"
                   alt="Stack of pancakes with syrup"
                   className="food-image"
                 />
@@ -86,7 +86,7 @@ useEffect(() => {
             <div className="food-item">
               <Link to={lunchLink}>
                 <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/08e1b12bc9a9adad73de0d625ceeefc170f05811"
+                  src="https://www.thirtyhandmadedays.com/wp-content/uploads/2018/12/chickenwraphorizontal-1.jpg"
                   alt="Wrap with lettuce and meat"
                   className="food-image"
                 />
@@ -95,7 +95,7 @@ useEffect(() => {
             <div className="food-item">
               <Link to={dinnerLink}>
                 <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/1b5fd6a396df2ece4cd6b343604c446dba0cbff7"
+                  src="https://www.allrecipes.com/thmb/IrY572TXic4UXXVn8EetsarI3S0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/AR-269500-creamy-garlic-pasta-Beauties-4x3-f404628aad2a435a9985b2cf764209b5.jpg"
                   alt="Pasta with tomato sauce"
                   className="food-image"
                 />
