@@ -1,7 +1,7 @@
 export interface PlannedMeal {
     PlannedMealID: number;
     Username: string;
-    Date: string;
+    MealDate: string;
     MealID: number;
     RecipeID: number;
 }
