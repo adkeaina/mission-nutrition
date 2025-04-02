@@ -91,8 +91,8 @@ namespace sprint2.API.Controllers
                 throw;
             }
 
-        //     return NoContent();
-        // }
+            return NoContent();
+        }
 
         [HttpDelete("user/{username}")]
         public async Task<IActionResult> DeleteUser(string username)
@@ -100,8 +100,8 @@ namespace sprint2.API.Controllers
             var user = await _context.SignIns.FindAsync(username);
             if (user == null) return NotFound();
 
-        //     _context.SignIns.Remove(user);
-        //     await _context.SaveChangesAsync();
+            _context.SignIns.Remove(user);
+            await _context.SaveChangesAsync();
 
             return NoContent();
         }
