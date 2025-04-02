@@ -30,32 +30,35 @@ const Today: React.FC = () => {
       );
     
     const data = await response.json();
-    setMeals(data.meals);
-    console.log(meals);
-    console.log("Reading data...");
-    meals.forEach(meal => {
-      console.log("Data: " + meal.MealDate);
-      console.log("Today: " + today);
-    if (meal.MealID == 1 && meal.MealDate == today){
-      setBreakfast(meal);
-      setBreakfastLink(`/recipes/${meal.RecipeID}`);  
-      console.log('breakfast link updated to ' + breakfastLink);
-    }
-    else if (meal.MealID == 2 && meal.MealDate == today) {
-      setLunch(meal);
-      setLunchLink(`/recipes/${meal.RecipeID}`);  
+    setMeals(data);
+    console.log(data);
 
-    }
-    else if (meal.MealID == 3 && meal.MealDate == today) {
-      setDinner(meal)
-      setDinnerLink(`/recipes/${meal.RecipeID}`);  
-    }
-  });
 
     };
     fetchMeals();
   }, [])
 
+useEffect(() => {
+  console.log("Processing meals... ", meals)
+
+  meals.forEach(meal => {
+    console.log("Data: " + meal.mealDate);
+    console.log("Today: " + today);
+    if (meal.mealId == 1 && meal.mealDate === today){
+      setBreakfast(meal);
+      setBreakfastLink(`/recipes/${meal.recipeId}`);  
+      console.log('breakfast link updated to ' + breakfastLink);
+      }
+    else if (meal.mealId == 2 && meal.mealDate === today) {
+      setLunch(meal);
+      setLunchLink(`/recipes/${meal.recipeId}`);  
+      }
+    else if (meal.mealId == 3 && meal.mealDate === today) {
+      setDinner(meal)
+      setDinnerLink(`/recipes/${meal.recipeId}`);  
+      }
+    });
+  }, meals)
   
 
   return (

@@ -150,7 +150,7 @@ namespace sprint2.API.Controllers
         }
         
         [HttpGet("AllRecipes")]
-        public IActionResult GetAllRecipes([FromQuery] string userName, [FromQuery] int mealDate)
+        public IActionResult GetAllRecipes([FromQuery] string userName, [FromQuery] string mealDate)
         {
             if (string.IsNullOrEmpty(userName))
             {
