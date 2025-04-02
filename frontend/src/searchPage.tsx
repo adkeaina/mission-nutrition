@@ -1,5 +1,5 @@
 import { useState } from "react";
-import TimeFilter from "./component/timeFilter";
+import TimeFilter from "./component/TimeFilter";
 import RecipeCardList from "./component/RecipeCardList"; // Import RecipeCardList
 
 function ParentComponent() {

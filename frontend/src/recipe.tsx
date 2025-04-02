@@ -13,7 +13,7 @@ const Recipe: React.FC = () => {
       const response = await fetch(`https://localhost:5000/api/recipe/?recipeId=${recipeId}`);
       const data = await response.json();
       setFullRecipe(data);
-    };
+    };  
 
     fetchRecipe();
   }, []);
