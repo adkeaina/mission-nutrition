@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./styles/signup.css";
+import { useNavigate } from "react-router-dom";
 
 interface SignUpFormData {
   firstName: string;
@@ -15,6 +16,7 @@ const SignUp: React.FC = () => {
     email: "",
     password: "",
   });
+  const navigate = useNavigate(); // Initialize navigate from react-router-dom
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -32,7 +34,7 @@ const SignUp: React.FC = () => {
 
   const handleSignInClick = () => {
     // Handle signin navigation
-    console.log("Navigate to signin");
+    navigate("/login");
   };
 
   return (

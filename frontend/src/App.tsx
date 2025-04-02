@@ -22,8 +22,6 @@ import RecordMacros from "./recordMacros";
 import ConfirmationPage from "./ConfirmationPage";
 
 function App() {
-  const [data, setData] = useState(null);
-  console.log(data);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false); //TODO: Change to false (true is for testing)
 
@@ -49,15 +47,8 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await fetch("https://api.example.com/data");
-        const result = await response.json();
-        setData(result);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setIsLoading(false);
-      }
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // Waits for 500ms
+      setIsLoading(false);
     };
     fetchData();
   }, []);
@@ -65,7 +56,7 @@ function App() {
   return (
     <>
       <RecipeListProvider>
-        {!isLoggedIn ? (
+        {!isLoggedIn ? (isLoading ? (<Loading />) : (
           <Router>
             <Routes>
               <Route path="/login" element={<Login onLogin={handleLogin} />} />
@@ -73,9 +64,8 @@ function App() {
               <Route path="*" element={<Navigate to="/login" />} />
             </Routes>
           </Router>
-        ) : isLoading ? (
-          <Loading />
-        ) : (
+        )
+        ) : isLoading ? (<Loading />) : (
           <Router>
             <Routes>
               <Route path="/" element={<Navigate to="/home" />} />
@@ -91,7 +81,7 @@ function App() {
               <Route path="/confirmation" element={<ConfirmationPage />} />
               <Route path="/today" element={<Today />} />
               <Route path="/calendarMonth" element={<CalendarMonth />} />
-              <Route path="/account" element={<Account />} />
+              <Route path="/account" element={<Account logOut={() => setIsLoggedIn(false)}/>} />
             </Routes>
             <NavBar />
           </Router>

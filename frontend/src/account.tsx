@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./styles/account.css";
 import { useNavigate } from "react-router-dom";
 
-const API_BASE = "https://localhost:5001/api/user";
+const API_BASE = "https://localhost:5000/api/Database/user";
 
 interface UserInfo {
   username: string;
@@ -11,7 +11,11 @@ interface UserInfo {
   lastName: string;
 }
 
-const Account: React.FC = () => {
+interface AccountProps {
+  logOut: () => void;
+}
+
+const Account: React.FC<AccountProps> = ({ logOut }) => {
   const navigate = useNavigate();
   const username = localStorage.getItem("username"); // Should be set during login
   const [user, setUser] = useState<UserInfo | null>(null);
@@ -26,7 +30,7 @@ const Account: React.FC = () => {
   useEffect(() => {
     if (!username) return;
 
-    fetch(`${API_BASE}/user/${username}`)
+    fetch(`${API_BASE}/${username}`)
       .then((res) => res.json())
       .then((data) => {
         setUser(data);
@@ -37,6 +41,7 @@ const Account: React.FC = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("username");
+    logOut();
     navigate("/login");
   };
 
@@ -46,7 +51,7 @@ const Account: React.FC = () => {
 
   const handleSave = async () => {
     try {
-      await fetch(`${API_BASE}/user/${username}`, {
+      await fetch(`${API_BASE}/${username}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -62,11 +67,12 @@ const Account: React.FC = () => {
   const handleDelete = async () => {
     if (!window.confirm("Are you sure you want to delete your account?")) return;
     try {
-      await fetch(`${API_BASE}/user/${username}`, {
+      await fetch(`${API_BASE}/${username}`, {
         method: "DELETE",
       });
       alert("Account deleted");
       localStorage.removeItem("username");
+      logOut();
       navigate("/login");
     } catch (error) {
       console.error("Delete failed:", error);
