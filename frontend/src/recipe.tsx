@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import "./styles/recipe.css";
 import { useParams } from "react-router-dom";
 import { FullRecipe } from "./types/FullRecipe.tsx";
-import BackButton from "./component/BackButton.tsx";
 
 const Recipe: React.FC = () => {
   const [fullRecipe, setFullRecipe] = React.useState<FullRecipe | null>(null);
@@ -10,7 +9,7 @@ const Recipe: React.FC = () => {
 
   useEffect(() => {
     const fetchRecipe = async () => {
-      const response = await fetch(`https://localhost:5000/api/recipe/?recipeId=${recipeId}`);
+      const response = await fetch(`https://localhost:5000/api/Database/GetRecipe?recipeId=${recipeId}`);
       const data = await response.json();
       setFullRecipe(data);
     };
@@ -20,7 +19,6 @@ const Recipe: React.FC = () => {
 
   return (
     <div className="recipe">
-      <BackButton />
       <div className="recipe-content">
         <h1 className="recipe-titlee">{fullRecipe?.recipe?.recipeName || 'Fake'} Recipe</h1>
 

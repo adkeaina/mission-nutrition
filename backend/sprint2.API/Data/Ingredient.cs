@@ -13,5 +13,7 @@ public partial class Ingredient
 
     public double? Carbohydrates { get; set; }
 
+    public string? IngredientName { get; set; }
+
     public virtual ICollection<RecipeIngredient> RecipeIngredients { get; set; } = new List<RecipeIngredient>();
 }

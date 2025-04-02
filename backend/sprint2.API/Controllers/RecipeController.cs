@@ -191,38 +191,50 @@ namespace sprint2.API.Controllers
             }
 
             var recipe = _context.Recipes
-                .Include(r => r.RecipeIngredients)
-                .ThenInclude(ri => ri.Ingredient)
-                .Include(r => r.RecipeSteps)
-                .FirstOrDefault(r => r.RecipeId == recipeId);
-
+                .Where(r => r.RecipeId == recipeId)
+                .Select(r => new {
+                    r.RecipeId,
+                    r.RecipeName,
+                    r.TimeToPrepare,
+                    r.StarRating,
+                    r.Servings,
+                    r.MealOfTheDay
+                })
+                .FirstOrDefault();
+            
             if (recipe == null)
             {
                 return NotFound("Recipe not found.");
             }
+            
+            var ingredients = _context.RecipeIngredients
+                .Where(ri => ri.RecipeId == recipeId)
+                .Include(ri => ri.Ingredient)
+                .Select(i => new
+                {
+                    i.IngredientId,
+                    i.Ingredient.IngredientName,
+                    i.Quantity,
+                    i.Unit
+                })
+                .ToList();
+            
+            var steps = _context.RecipeSteps
+                .Where(sr => sr.RecipeId == recipeId)
+                .Select(s => new
+                {
+                    s.RecipeId,
+                    s.StepNumber,
+                    s.StepText
+                })
+                .ToList();
 
             return Ok(new
             {
                 recipeID = recipe.RecipeId,
-                recipeName = recipe.RecipeName,
-                timeToPrepare = recipe.TimeToPrepare,
-                starRating = recipe.StarRating,
-                servings = recipe.Servings,
-                mealOfTheDay = recipe.MealOfTheDay,
-                ingredients = recipe.RecipeIngredients.Select(ri => new
-                {
-                    ingredientId = ri.Ingredient.IngredientId, 
-                    quantity = ri.Quantity,
-                    unit = ri.Unit,
-                    protein = ri.Ingredient.Protein,
-                    fat = ri.Ingredient.Fat,
-                    carbohydrates = ri.Ingredient.Carbohydrates
-                }).ToList(),
-                steps = recipe.RecipeSteps.Select(s => new
-                {
-                    stepNumber = s.StepNumber,
-                    stepText = s.StepText
-                }).ToList()
+                recipe,
+                ingredients,
+                steps,
             });
         }
 

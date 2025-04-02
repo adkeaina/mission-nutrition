@@ -1,10 +1,12 @@
-import { useState } from "react";
 import "./styles/home.css";
 import { useNavigate } from 'react-router-dom';
 
-const Homepage = () => {
+interface HomepageProps {
+  announcementSeen: boolean;
+  setAnnouncementSeen: (seen: boolean) => void;
+}
+const Homepage = ({announcementSeen, setAnnouncementSeen} : HomepageProps) => {
   const navigate = useNavigate();  // Initialize navigate from react-router-dom
-  const [announcementSeen, setAnnouncementSeen] = useState(false);
 
   return (
     <div className="homepage">
@@ -16,7 +18,7 @@ const Homepage = () => {
           <span className="welcome-subtext">Select an option below</span>
         </div>
 
-        <div className="action-button" onClick={() => navigate('/search')}>
+        <div className="action-button" onClick={() => navigate('/record-macros')}>
           <img
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/990308da33090936e02078ca4480b79c82d65d1757cfbb38874a7398d8086c22?placeholderIfAbsent=true&apiKey=12e28406f08449fa85c02ddc97075e3b"
             className="action-icon"

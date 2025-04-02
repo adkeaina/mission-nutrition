@@ -23,7 +23,9 @@ import ConfirmationPage from './ConfirmationPage';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(true); //TODO: Change to false (true is for testing)
+  const [isLoggedIn, setIsLoggedIn] = useState(false); //TODO: Change to false (true is for testing)
+  const [announcementSeen, setAnnouncementSeen] = useState(false);
+
 
   // Shared macros state for updating stats from RecordMacros.
   const [macros, setMacros] = useState({
@@ -83,7 +85,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Navigate to="/home" />} />
               <Route path="/login" element={<Navigate to="/home" />} />
-              <Route path="/home" element={<Homepage />} />
+              <Route path="/home" element={<Homepage announcementSeen={announcementSeen} setAnnouncementSeen={setAnnouncementSeen} />} />
               <Route path="/recipe/:recipeId" element={<Recipe />} />
               <Route path="/search" element={<SearchPage />} />
               <Route path="/signup" element={<SignUp />} />
